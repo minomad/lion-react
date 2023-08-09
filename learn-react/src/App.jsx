@@ -1,13 +1,12 @@
-import List from './List';
-import Heading from './Heading';
-import Description from './Description';
+import RootLayout from './layout/RootLayout';
+import Home from './pages/Home';
 
 function App() {
   return (
     <div className="App">
-      <Heading />
-      <Description />
-      <List />
+      <RootLayout>
+        <Home />
+      </RootLayout>
     </div>
   );
 }
