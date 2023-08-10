@@ -1,12 +1,12 @@
 // 유틸리티 함수 호출
 import { getRandom } from '@/utils/getRandomMinMax';
 
-function DisplayingData({ statusMessage }) {
+function DisplayingData({ hidden, statusMessage }) {
 
   return (
     <>
-      <dt hidden>데이터 바인딩(data binding)</dt>
-      <dd hidden>
+      <dt hidden={hidden}>데이터 바인딩(data binding)</dt>
+      <dd hidden={hidden}>
         <p>상태 메시지(status message)를 연결해 화면에 출력합니다.</p>
         <span className="status">
           {/* displaying data */}

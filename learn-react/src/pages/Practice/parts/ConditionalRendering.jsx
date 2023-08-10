@@ -1,4 +1,4 @@
-/ 에셋 이미지 호출
+// 에셋 이미지 호출
 import reactImagePath from '@/assets/react.svg';
 import viteImagePath from '@/assets/vite.svg';
 
@@ -20,7 +20,7 @@ const status = 'isSuccess';
 
 /* 컴포넌트 --------------------------------------------------------------------- */
 
-function ConditionalRendering({ imageType }) {
+function ConditionalRendering({ hidden, imageType }) {
   // 2-1. 조건 문 (함수 몸체(function body) 내부 사용)
   // let imageComponent; // undefined
 
@@ -59,7 +59,7 @@ function ConditionalRendering({ imageType }) {
   const isntShowImageLabel = false;
 
   return (
-    <>
+    <div hidden={hidden}>
       <dt>조건부 렌더링(conditional rendering)</dt>
       <dd>
         <p>이미지 타입(image type)에 따라 렌더링 여부를 결정합니다.</p>
@@ -105,7 +105,7 @@ function ConditionalRendering({ imageType }) {
           }
         </div>
       </dd>
-    </>
+    </div>
   );
 }
 
