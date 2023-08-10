@@ -1,0 +1,37 @@
+:root {
+  font-size: 10px;
+  background-color: #e4e5ed;
+  overflow-y: scroll;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  font:
+    1.6rem/1.5 'SUIT Variable',
+    sans-serif;
+  & * {
+    box-sizing: inherit;
+  }
+}
+
+img {
+  vertical-align: middle;
+}
+
+button {
+  cursor: pointer;
+  font-size: 1.6rem;
+
+  &:hover:not(:disabled) {
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+abbr[title] {
+  cursor: help;
+  text-decoration: none;
+}

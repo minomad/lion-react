@@ -1,8 +1,12 @@
 // 스타일 및 에셋 연결
+import './Practice.css'
+import { getRandom } from '@/utils/getRandomMinMax';
+import reactSvg from '@/assets/react.svg'
+import viteSvg from '@/assets/vite.svg'
 
-const imageType = 'react';
+let imageType = 'react';
 
-const isShowReactImage = true;
+let isShowReactImage = true;
 
 const statusMessage = [
   '⌛️ 대기',
@@ -25,7 +29,7 @@ function Practice() {
   };
 
   return (
-    <div className="App">
+    <div className="Practice">
       <h1>JSX 인 액션</h1>
       <hr />
       <dl className="descriptionList">
@@ -34,6 +38,12 @@ function Practice() {
           <p>상태 메시지(status message)를 연결해 화면에 출력합니다.</p>
           <span className="status">
             {/* statusMessage 값을 화면에 표시합니다. (랜덤 표시도 도전!) */}
+            {/* {statusMessage[0]}
+            {statusMessage[1]}
+            {statusMessage[2]}
+            {statusMessage[3]} */}
+            {/* {statusMessage[Math.floor(Math.random()* statusMessage.length)]} */}
+            {statusMessage[getRandom(statusMessage.length)]}
           </span>
         </dd>
         <dt>조건부 렌더링(conditional rendering)</dt>
@@ -42,6 +52,10 @@ function Practice() {
           <div className="conditionalRendering">
             {/* imageType 값이 'vite'인 경우 Vite 이미지를, 'react'인 경우 React 이미지를 화면에 표시합니다. */}
             {/* imageType이 'vite'인 경우 'Vite', 'react'인 경우 'React' 텍스트를 화면에 표시합니다. */}
+            <img src={reactSvg} alt="리액트"/>
+            <img src={viteSvg} alt="리액트"/>
+            {/* 퍼블릭 */}
+            {/* <img src="/react.avif" alt="리액트" /> */}
           </div>
         </dd>
         <dd style={{ marginTop: 12 }}>

@@ -1,13 +1,11 @@
 import RootLayout from './layout/RootLayout';
-import Home from './pages/Home';
-import Logo from './components/Logo';
+import Practice from './pages/Practice/Practice';
 
 function App() {
   return (
     <div className="App">
-      <Logo color="blue" />
       <RootLayout>
-        <Home />
+        <Practice />
       </RootLayout>
     </div>
   );
