@@ -12,7 +12,7 @@ function DefinitionList() {
     );
   };
 
-  const allHidden = true;
+  const allHidden = false;
 
   return (
     <dl className="descriptionList">
