@@ -1,11 +1,6 @@
-// 스타일 파일 호출
 import './Practice.css';
-
-// 컴포넌트 호출
 import DefinitionList from './DefinitionList';
 import Controller from './parts/Controller';
-
-/* -------------------------------------------------------------------------- */
 
 function Practice() {
   return (

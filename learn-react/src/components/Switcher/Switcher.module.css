@@ -1,0 +1,65 @@
+.Switcher {
+  --size-sm: 16px;
+  --size-md: 18px;
+  --size-lg: 20px;
+  --size: var(--size-sm);
+  --body: #ccc7;
+  --on-bg: #42a5f5;
+  --off-bg: rgba(163, 163, 163, 0.757);
+  --on-text: #ebf5fd;
+  --on-handle: color-mix(in srgb, var(--on-bg) 100%, var(--on-text) 50%);
+
+  position: relative;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  block-size: calc(var(--size) * 1.85);
+  inline-size: calc(var(--size) * 3);
+
+  background: var(--body);
+  border: .1px solid #999b;
+  padding: 2px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1rem;
+
+  &.md {
+    --size: var(--size-md);
+  }
+
+  &.lg {
+    --size: var(--size-lg);
+  }
+
+  &.on {
+    color: var(--on-text);
+    justify-content: flex-end;
+
+    .handle {
+      background: var(--on-bg);
+    }
+  }
+
+  .handle {
+    display: grid;
+    place-content: center;
+    block-size: calc(var(--size) * 1.5);
+    inline-size: calc(var(--size) * 1.5);
+    border-radius: 9999px;
+    line-height: 1;
+    background: var(--off-bg);
+  }
+}
+
+.SwitcherWrapper {
+  display: inline-flex;
+  min-width: 140px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+}
+
+.label {
+  order: -1;
+}

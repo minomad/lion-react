@@ -1,8 +1,8 @@
 function Products() {
   return (
-    <div>
-      <h2>상품 페이지</h2>
-    </div>
+    <>
+      <h2>제품 목록 페이지</h2>
+    </>
   );
 }
 
