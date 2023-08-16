@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function LearnStateAndEffects() {
+function State_Array2() {
   const [movieList] = useState([
     { id: 1, title: '오펜하이머' },
     { id: 2, title: '엘리멘탈' },
@@ -44,4 +44,4 @@ function LearnStateAndEffects() {
     </div>
   );
 }
-export default LearnStateAndEffects;
+export default State_Array2;
