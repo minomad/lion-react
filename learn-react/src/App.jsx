@@ -1,10 +1,11 @@
 import RootLayout from './layout/RootLayout';
-import Demo from './pages/Demo';
+import LearnStateAndEffects from './pages/LearnStateAndEffects';
+
 function App() {
   return (
     <div className="App">
       <RootLayout>
-        <Demo />
+        <LearnStateAndEffects />
       </RootLayout>
     </div>
   );
