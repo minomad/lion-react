@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-function LearnStateAndEffects() {
-   // 숫자 값 상태 관리
-  
+function ObjectGroup_state() {
+  // 숫자 값 상태 관리
+
   // 마우스의 x 좌표
   // const [mouseX, setMouseX] = useState(0);
   // 마우스의 y 좌표
@@ -38,5 +38,4 @@ function LearnStateAndEffects() {
   );
 }
 
-
-export default LearnStateAndEffects;
+export default ObjectGroup_state;
