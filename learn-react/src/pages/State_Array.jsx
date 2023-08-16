@@ -40,7 +40,7 @@ const fontWeightList = Array(9)
   .fill(1)
   .map((n, i) => 100 * (i + 1));
 
-function LearnStateAndEffects() {
+function State_Array() {
   const [fontWeights] = useState(fontWeightList);
   const [selectedFontWeight, setSelectedFontWeight] = useState(
     fontWeightList[3] // 400
@@ -88,4 +88,4 @@ function LearnStateAndEffects() {
   );
 }
 
-export default LearnStateAndEffects;
+export default State_Array;
