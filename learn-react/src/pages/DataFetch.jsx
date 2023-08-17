@@ -14,7 +14,7 @@
 
 import { useEffect, useState } from 'react';
 
-function LearnStateAndEffects() {
+function DataFetch() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState('pending');
@@ -91,4 +91,4 @@ function LearnStateAndEffects() {
   );
 }
 
-export default LearnStateAndEffects;
+export default DataFetch;
