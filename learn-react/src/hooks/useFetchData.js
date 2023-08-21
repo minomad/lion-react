@@ -42,7 +42,3 @@ export default function useFetchData(endpoint) {
 
   return { data, isLoading, error };
 }
-
-
-// 사용법
-// const { data, isLoading, error } = useFetchData(PB_PRODUCTS_ENDPOINT);

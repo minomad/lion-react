@@ -14,7 +14,7 @@
 
 import { useEffect, useState } from 'react';
 
-function DataFetch() {
+function LearnStateAndEffects() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState('pending');
@@ -28,7 +28,7 @@ function DataFetch() {
     setStatus('loading'); // 상태 업데이트 일괄(batch) 처리
 
     // Promise API
-    fetch('https://jjsonplaceholder.typicode.com/todos?_limit=5')
+    fetch('https://jsonplaceholder.typicode.com/todos?_limit=5')
       // 성공
       .then((response) => response.json())
       .then((responseData) => {
@@ -91,4 +91,4 @@ function DataFetch() {
   );
 }
 
-export default DataFetch;
+export default LearnStateAndEffects;

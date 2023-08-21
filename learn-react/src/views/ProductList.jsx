@@ -3,7 +3,7 @@ import useFetchData from '@/hooks/useFetchData';
 import ProductItem from './ProductItem';
 
 const PB_PRODUCTS_ENDPOINT = `
-  http://127.0.0.1:8090/api/collections/products/records
+  ${import.meta.env.VITE_PB_URL}/api/collections/products/records
 `;
 
 function ProductList() {
@@ -26,9 +26,9 @@ function ProductList() {
 
   return (
     <ul className="grid grid-cols-3 m-10">
-      {data &&
-        data.items &&
-        data.items?.map((item) => <ProductItem key={item.id} item={item} />)}
+      {data.items?.map((item) => (
+        <ProductItem key={item.id} item={item} />
+      ))}
     </ul>
   );
 }

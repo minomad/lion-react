@@ -1,13 +1,12 @@
 import { useState } from 'react';
 
-function SpringBoolean_state() {
+function LearnStateAndEffects() {
   // 성(lastName), 이름(firstName)
   const [lastName, setLastName] = useState('');
   const [firstName, setFirstName] = useState('');
-  // const [showYourName, setShowYourName] = useState(false);
 
   // 성 + 이름(fullName) 출력
-  // 파생된 상태 (derived state)는 여러개여도 괜찮 
+  // 파생된 상태 (derived state)
   const fullName = lastName + firstName;
   // const fullNameLength = lastName.length + firstName.length;
   const showYourName = lastName.length > 0 && firstName.length > 0;
@@ -46,7 +45,6 @@ function SpringBoolean_state() {
         <span className='text-base text-slate-600'>({fullName.length})</span>
       </div>
 
-
       {
         showYourName &&
         <>
@@ -59,4 +57,4 @@ function SpringBoolean_state() {
   );
 }
 
-export default SpringBoolean_state;
+export default LearnStateAndEffects;

@@ -1,7 +1,7 @@
 import Spinner from '@/components/Spinner';
 import { useEffect, useState } from 'react';
 
-function Pocket() {
+function LearnStateAndEffects() {
   // 1. data
   const [data, setData] = useState([]);
   // 2. isLoading
@@ -60,4 +60,4 @@ function Pocket() {
   );
 }
 
-export default Pocket;
+export default LearnStateAndEffects;

@@ -10,9 +10,9 @@
 
 import { useEffect, useState } from 'react';
 
-// 리액트: UseEffect 컴포넌트를 다시 실행한다.
+// 리액트: LearnStateAndEffects 컴포넌트를 다시 실행한다.
 // 리액트 렌더 트리거 효윤님이 요청했으니까.
-function UseEffect() {
+function LearnStateAndEffects() {
   const [count, setCount] = useState(0);
 
   // 이펙트 사용 (동기화)
@@ -140,4 +140,4 @@ function CountButton({ onIncrement }) {
   )
 }
 
-export default UseEffect;
+export default LearnStateAndEffects;

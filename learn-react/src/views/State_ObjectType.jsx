@@ -10,7 +10,7 @@ const initialRepository = {
   },
 };
 
-function ObjectGroup_state() {
+function LearnStateAndEffects() {
   // 숫자 값 상태 관리
 
   // 마우스의 x 좌표
@@ -110,11 +110,11 @@ function ObjectGroup_state() {
             value={repository.profile.label}
             onChange={(e) => {
               setRepository({
-                ...repository,
+                // ...repository,
                 // id: repository.id,
                 // title: repository.title,
                 profile: {
-                  ...repository.profile,
+                  // ...repository.profile,
                   // url: repository.profile.url,
                   label: e.target.value,
                 },
@@ -141,4 +141,4 @@ function ObjectGroup_state() {
   );
 }
 
-export default ObjectGroup_state;
+export default LearnStateAndEffects;
