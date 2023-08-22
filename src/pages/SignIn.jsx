@@ -21,7 +21,7 @@ function SignIn() {
 
     console.log(authData);
 
-    // navigate('/');
+    navigate('/');
   };
 
   const handleInput = (e) => {
