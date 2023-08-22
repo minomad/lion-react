@@ -2,12 +2,12 @@ import { useEffect, useId, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import useProductItem from '@/hooks/useProductItem';
 import Spinner from '@/components/Spinner';
-import { useDelete as useDeleteProduct } from '@/hooks/products/useProducts';
+import { useDelete as useDeleteProduct, useUpdate as UseUpdateProduct } from '@/hooks/products/useProducts';
+import debounce from '@/utils/debounce';
 
 const initialFormState = {
   title: '',
   color: '',
-  price: 0,
 };
 
 function ProductEdit() {
@@ -18,6 +18,7 @@ function ProductEdit() {
   const { productId } = useParams();
   const navigate = useNavigate();
   const deleteProduct = useDeleteProduct();
+  const updataProduct = UseUpdateProduct();
 
   const { isLoading, data } = useProductItem(productId);
 
@@ -33,46 +34,41 @@ function ProductEdit() {
     }
   }, [isLoading, data]);
 
-  const handleChangeInput = ({ target }) => {
+  // const handleChangeInput = ({ target }) => {
+  //   setFormState({
+  //     ...formState,
+  //     [target.name]: target.value,
+  //   });
+  // };
+
+  const handleDebounceChangeInput = debounce(({ target }) => {
     setFormState({
       ...formState,
       [target.name]: target.value,
     });
-  };
+  }, 300);
 
   const handleEditProduct = (e) => {
     e.preventDefault(); // ← 이유
     // client → server(pb)
     // Content-Type: application/json
-    fetch(
-      `${
-        import.meta.env.VITE_PB_API
-      }/collections/products/records/${productId}`,
-      {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formState),
-      }
-    )
-      .then(() => {
-        navigate('/products');
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+      updataProduct(productId, formState)
+      .then(() => navigate('/products'))
+      .catch((error) => console.error(error));
   };
 
   const handleDeleteProduct = () => {
-    const userConfirm = confirm('정..말로 지울건가요?');
+    const userConfirm = confirm('정..말로 지울건가요? 🥹');
+    
     if (userConfirm) {
       deleteProduct(productId)
-      .then(() => {
-        navigate('/products');
-      })
+        .then((response) => {
+          console.log(response)
+          navigate('/products')
+        })
+        .catch(error => console.error(error));
     }
-  };
+  }
 
   if (isLoading) {
     return <Spinner size={120} />;
@@ -97,8 +93,8 @@ function ProductEdit() {
               type="text"
               name="title"
               id={titleId}
-              value={formState.title}
-              onChange={handleChangeInput}
+              defaultValue={formState.title}
+              onChange={handleDebounceChangeInput}
             />
           </div>
           {/* color */}
@@ -110,8 +106,8 @@ function ProductEdit() {
               type="text"
               name="color"
               id={colorId}
-              value={formState.color}
-              onChange={handleChangeInput}
+              defaultValue={formState.color}
+              onChange={handleDebounceChangeInput}
             />
           </div>
           {/* price */}
@@ -123,8 +119,8 @@ function ProductEdit() {
               type="number"
               name="price"
               id={priceId}
-              value={formState.price}
-              onChange={handleChangeInput}
+              defaultValue={formState.price}
+              onChange={handleDebounceChangeInput}
             />
           </div>
           <div>
