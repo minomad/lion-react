@@ -3,7 +3,6 @@ import useDocumentTitle from '@/hooks/useDocumentTitle';
 import useProductList from '@/hooks/useProductList';
 import { getPbImageURL, numberWithComma } from '@/utils';
 import { Link } from 'react-router-dom';
-
 // PB → READ / CREATE / UPDATE / DELETE
 //
 // HTTP Methods
@@ -19,6 +18,7 @@ import { Link } from 'react-router-dom';
 function Products() {
   useDocumentTitle('제품 목록');
   const { isLoading, data } = useProductList();
+
 
   if (isLoading) {
     return <Spinner size={160} />;
