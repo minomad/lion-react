@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import pb from '@/api/pocketbase';
+import debounce from '@/utils/debounce';
 
 function SignUp() {
 
@@ -16,10 +17,12 @@ function SignUp() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+
     const { password, passwordConfirm } = formState;
     
     if (password !== passwordConfirm) {
-      alert('비밀번호가 일치하지 않습니다. 다시 확인해보세요.')
+      alert('비밀번호가 일치하지 않습니다. 다시 확인해보세요.');
+      return;
     }
 
     // PocketBase SDK 인증 요청
@@ -39,8 +42,10 @@ function SignUp() {
     });
   };
 
+  const handleDebounceInput = debounce(handleInput, 500);
+
   return (
-    <div>
+    <div className='flex flex-col items-center'>
       <h2>회원가입</h2>
 
       <form onSubmit={handleRegister} className='flex flex-col gap-2 mt-2 justify-start items-start'>
@@ -50,8 +55,8 @@ function SignUp() {
             type="text"
             name="name"
             id="name"
-            value={formState.name}
-            onChange={handleInput}
+            defaultValue={formState.name}
+            onChange={handleDebounceInput}
             className='border border-slate-300 ml-2'
           />
         </div>
@@ -61,8 +66,8 @@ function SignUp() {
             type="text"
             name="username"
             id="username"
-            value={formState.username}
-            onChange={handleInput}
+            defaultValue={formState.username}
+            onChange={handleDebounceInput}
             className='border border-slate-300 ml-2'
           />
         </div>
@@ -72,8 +77,8 @@ function SignUp() {
             type="email"
             name="email"
             id="email"
-            value={formState.email}
-            onChange={handleInput}
+            defaultValue={formState.email}
+            onChange={handleDebounceInput}
             className='border border-slate-300 ml-2'
           />
         </div>
@@ -83,8 +88,8 @@ function SignUp() {
             type="password"
             name="password"
             id="password"
-            value={formState.password}
-            onChange={handleInput}
+            defaultValue={formState.password}
+            onChange={handleDebounceInput}
             className='border border-slate-300 ml-2'
           />
         </div>
@@ -94,8 +99,8 @@ function SignUp() {
             type="password"
             name="passwordConfirm"
             id="passwordConfirm"
-            value={formState.passwordConfirm}
-            onChange={handleInput}
+            defaultValue={formState.passwordConfirm}
+            onChange={handleDebounceInput}
             className='border border-slate-300 ml-2'
           />
         </div>
@@ -104,7 +109,8 @@ function SignUp() {
           <button type="reset">취소</button>
         </div>
       </form>
-      <Link to="/signip"/>
+
+      <Link to="/signin">로그인</Link>
     </div>
   );
 }

@@ -1,13 +1,17 @@
 import { useEffect, useId, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import useProductItem from '@/hooks/useProductItem';
 import Spinner from '@/components/Spinner';
-import { useDelete as useDeleteProduct, useUpdate as UseUpdateProduct } from '@/hooks/products/useProducts';
+import {
+  useDelete as useDeleteProduct,
+  useUpdate as useUpdateProduct,
+} from '@/hooks/products/useProducts';
 import debounce from '@/utils/debounce';
 
 const initialFormState = {
   title: '',
   color: '',
+  price: '',
 };
 
 function ProductEdit() {
@@ -17,12 +21,17 @@ function ProductEdit() {
 
   const { productId } = useParams();
   const navigate = useNavigate();
-  const deleteProduct = useDeleteProduct();
-  const updataProduct = UseUpdateProduct();
 
   const { isLoading, data } = useProductItem(productId);
 
   const [formState, setFormState] = useState(initialFormState);
+
+  const deleteProduct = useDeleteProduct();
+  const updateProduct = useUpdateProduct();
+
+  // useEffect(() => {
+  //   console.log(formState);
+  // }, [formState])
 
   useEffect(() => {
     if (!isLoading && data) {
@@ -34,104 +43,91 @@ function ProductEdit() {
     }
   }, [isLoading, data]);
 
-  // const handleChangeInput = ({ target }) => {
-  //   setFormState({
-  //     ...formState,
-  //     [target.name]: target.value,
-  //   });
-  // };
-
-  const handleDebounceChangeInput = debounce(({ target }) => {
+  const handleChangeInput = ({ target }) => {
     setFormState({
       ...formState,
       [target.name]: target.value,
     });
-  }, 300);
+  };
+
+  const handleDebounceChangeInput = debounce(handleChangeInput, 500);
 
   const handleEditProduct = (e) => {
-    e.preventDefault(); // ← 이유
-    // client → server(pb)
-    // Content-Type: application/json
-      updataProduct(productId, formState)
+    e.preventDefault();
+
+    updateProduct(productId, formState)
       .then(() => navigate('/products'))
       .catch((error) => console.error(error));
   };
 
   const handleDeleteProduct = () => {
     const userConfirm = confirm('정..말로 지울건가요? 🥹');
-    
+
     if (userConfirm) {
       deleteProduct(productId)
         .then((response) => {
-          console.log(response)
-          navigate('/products')
+          console.log(response);
+          navigate('/products');
         })
-        .catch(error => console.error(error));
+        .catch((error) => console.error(error));
     }
-  }
+  };
 
   if (isLoading) {
     return <Spinner size={120} />;
   }
 
   if (data) {
+    console.log(formState.title);
+    console.log(formState.color);
+    console.log(formState.price);
+
     return (
       <>
         <h2 className="text-2xl text-center">
           {data.title}({data.color}) 수정 폼
         </h2>
-        <form
-          onSubmit={handleEditProduct}
-          className="flex flex-col items-center py-10"
-        >
+        <form onSubmit={handleEditProduct} className='flex flex-col items-center'>
           {/* title */}
-          <div>
-            <label htmlFor={titleId} className="mx-5">
-              타이틀
-            </label>
+          <div className='my-3'>
+            <label htmlFor={titleId} className='mr-3'>타이틀</label>
             <input
               type="text"
               name="title"
               id={titleId}
               defaultValue={formState.title}
               onChange={handleDebounceChangeInput}
+              className="outline"
             />
           </div>
           {/* color */}
-          <div>
-            <label htmlFor={colorId} className="mx-5">
-              컬러
-            </label>
+          <div className='my-3'>
+            <label htmlFor={colorId} className='mr-3'>컬러</label>
             <input
               type="text"
               name="color"
               id={colorId}
               defaultValue={formState.color}
               onChange={handleDebounceChangeInput}
+              className="outline"
             />
           </div>
           {/* price */}
-          <div>
-            <label htmlFor={priceId} className="mx-5">
-              프라이스
-            </label>
+          <div className='my-3'>
+            <label htmlFor={priceId} className='mr-3'>프라이스</label>
             <input
               type="number"
               name="price"
+              step={1000}
               id={priceId}
               defaultValue={formState.price}
               onChange={handleDebounceChangeInput}
+              className="outline"
             />
           </div>
           <div>
-            <button type="submit" className="p-2 border rounded-sm">
-              수정
-            </button>
-            <button
-              type="button"
-              onClick={handleDeleteProduct}
-              className="p-2 border rounded-sm"
-            >
+            <button type="submit">수정</button>
+            <button type="button" onClick={handleDeleteProduct}>
               삭제
             </button>
           </div>
