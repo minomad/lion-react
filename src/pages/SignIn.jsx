@@ -7,7 +7,7 @@ import { useAuth } from '@/contexts/Auth';
 function SignIn() {
   const navigate = useNavigate();
   const { isAuth } = useAuth();
-  
+
   const [formState, setFormState] = useState({
     email: '',
     password: '',
@@ -70,7 +70,7 @@ function SignIn() {
       </form>
 
       <Link to="/signup">회원가입</Link>
-      <button
+      {isAuth && <button
         type="button"
         className='ml-4'
         onClick={async () => {
@@ -89,7 +89,7 @@ function SignIn() {
         }}
       >
         탈퇴
-      </button>
+      </button>}
     </div>
   );
 }

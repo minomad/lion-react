@@ -95,9 +95,7 @@ export function useTheme() {
 export function useDispatch() {
   const contextValue = useContext(ThemeContext);
   if (!contextValue) {
-    throw new Error(
-      'useDispatch 훅은 ThemeProvider 내부에서만 사용 가능합니다.'
-    );
+    throw new Error('useDispatch 훅은 ThemeProvider 내부에서만 사용 가능합니다.');
   }
   return contextValue.dispatch;
 }

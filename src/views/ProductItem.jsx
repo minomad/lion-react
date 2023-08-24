@@ -1,4 +1,5 @@
 import { getPbImageURL, numberWithComma } from '@/utils';
+import { shape, string, number } from 'prop-types';
 
 export default function ProductItem({ item }) {
   return (
@@ -18,4 +19,16 @@ export default function ProductItem({ item }) {
       </figure>
     </li>
   );
+}
+
+export const PRODUCT_TYPE = shape({
+  id: string,
+  photo: string,
+  price: number,
+  title: string,
+  color: string,
+});
+
+ProductItem.propTypes = {
+  item: PRODUCT_TYPE.isRequired
 }
