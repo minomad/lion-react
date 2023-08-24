@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import pb from '@/api/pocketbase';
 import debounce from '@/utils/debounce';
+import { useAuth } from '@/contexts/Auth';
 
 function SignIn() {
   const navigate = useNavigate();
-
+  const { isAuth } = useAuth();
+  
   const [formState, setFormState] = useState({
     email: '',
     password: '',
