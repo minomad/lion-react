@@ -21,21 +21,34 @@ function RootLayout({ displaySideMenu = false }) {
                 <Link to="/learn/03">속성(props) 드릴링 이슈</Link>
               </li>
               <li>
-                <Link to="/learn/04">컴포넌트 상태 공유 Context API</Link>
+                <Link to="/learn/04/01">
+                  상태 공유 Context{' '}
+                  <abbr
+                    title="Application Programming Interface"
+                    className="cursor-help no-underline"
+                  >
+                    API
+                  </abbr>
+                </Link>
+              </li>
+              <li>
+                <Link to="/learn/04/02">Context 분리 관리</Link>
               </li>
               <li>
                 <Link to="/learn/05">값을 기억하기 위한 Refs</Link>
               </li>
               <li>
-                <Link to="/learn/06">컴포넌트 내부의 DOM 요소를 직접 참조하는 Refs</Link>
+                <Link to="/learn/06">DOM 요소를 참조하는 Refs</Link>
               </li>
               <li>
-                <Link to="/learn/07">값을 기억하기 위한 Refs</Link>
+                <Link to="/learn/07/01">GSAP 애니메이션</Link>
               </li>
               <li>
-                <Link to="/learn/08">값을 기억하기 위한 Refs</Link>
+                <Link to="/learn/07/02">GSAP 컨텍스트</Link>
               </li>
-
+              <li>
+                <Link to="/learn/08">Framer Motion 애니메이션</Link>
+              </li>
             </ul>
           </nav>
         )}
