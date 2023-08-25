@@ -58,7 +58,7 @@ function Circle() {
     };
 
     const circleElement = circleRef.current;
-
+    console.log(circleElement);
     // 이벤트 연결
     circleElement.addEventListener('click', handleMoveX);
 

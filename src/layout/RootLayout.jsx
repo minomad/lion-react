@@ -49,6 +49,12 @@ function RootLayout({ displaySideMenu = false }) {
               <li>
                 <Link to="/learn/08">Framer Motion 애니메이션</Link>
               </li>
+              <li>
+                <Link to="/learn/09">Prop Type 검사</Link>
+              </li>
+              <li>
+                <Link to="/learn/10">로컬 스토리지 활용</Link>
+              </li>
             </ul>
           </nav>
         )}

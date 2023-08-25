@@ -1,8 +1,4 @@
-import {
-  Route,
-  createBrowserRouter,
-  createRoutesFromElements,
-} from 'react-router-dom';
+import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import RootLayout from './layout/RootLayout';
 import Home from './pages/Home';
 import Products from './pages/Products';
@@ -20,17 +16,20 @@ import RefExampleReferencingDOM from './learn/6-ref-referencing-dom';
 import GSAP_Animation from './learn/7-1-ref-gsap-animation';
 import GSAP_Context from './learn/7-2-ref-gsap-context';
 import FramerMotion_Animation from './learn/8-framer-motion';
-
+import ComponentPropTypes from './learn/9-component-prop-types';
+import LocalStorage from './learn/10-local-storage';
+import ProductNew from './pages/ProductNew';
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<RootLayout displaySideMenu={false} />}>
+    <Route path="/" element={<RootLayout displaySideMenu={true} />}>
       <Route index element={<Home />} />
       <Route path="signin" element={<SignIn />} />
       <Route path="signup" element={<SignUp />} />
       <Route path="products" element={<Products />} />
+      <Route path="product/new" element={<ProductNew />} />
       <Route path="product/edit/:productId" element={<ProductEdit />} />
       <Route path="contact" element={<Contact />} />
-      
+
       {/* 학습 주제 */}
       <Route path="learn/01" element={<PassingProps />} />
       <Route path="learn/02" element={<LiftingStateUp />} />
@@ -42,6 +41,8 @@ const router = createBrowserRouter(
       <Route path="learn/07/01" element={<GSAP_Animation />} />
       <Route path="learn/07/02" element={<GSAP_Context />} />
       <Route path="learn/08" element={<FramerMotion_Animation />} />
+      <Route path="learn/09" element={<ComponentPropTypes />} />
+      <Route path="learn/10" element={<LocalStorage />} />
     </Route>
   )
 );

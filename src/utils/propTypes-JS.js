@@ -1,4 +1,4 @@
-export function string(props, propName, componentName) {
+function string(props, propName, componentName) {
   const propValue = props[propName];
   const propType = typeof propValue;
 
@@ -14,7 +14,6 @@ const PropTypes = {
   string,
 };
 
-export default PropTypes;
 
 // import { string } from '@/utils/propTypes'
 // import PropTypes from '@/utils/propTypes'

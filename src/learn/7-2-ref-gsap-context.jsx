@@ -21,11 +21,11 @@ function Circle() {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       // 1. CSS 선택자 사용하기 (GSAP 사용자 방식)
-      gsap.fromTo(
-        'img',
-        { scale: 0, y: -100, opacity: 0 },
-        { scale: 1.25, y: -0, opacity: 0.6, rotate: 360 * 3 }
-      );
+      // gsap.fromTo(
+      //   'img',
+      //   { scale: 0, y: -100, opacity: 0 },
+      //   { scale: 1.25, y: -0, opacity: 0.6, rotate: 360 * 3 }
+      // );
 
       // 2. Refs 사용하기 (React 방식)
       // gsap.to(imageRef.current, {  });
