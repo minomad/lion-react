@@ -1,4 +1,3 @@
-
 function debounce(callback, timeout = 300) {
   let cleanup;
   return (...args) => {

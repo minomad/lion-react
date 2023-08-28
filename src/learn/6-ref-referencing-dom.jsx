@@ -1,8 +1,12 @@
 import { useLayoutEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 function RefExampleReferencingDOM() {
   return (
     <>
+      <Helmet>
+        <title>React Refs. referencing DOM - Learn</title>
+      </Helmet>
       <h2>컴포넌트 내부의 DOM 요소를 직접 참조하는 Refs</h2>
       <p className="mb-4">원에 클릭한 후, 애니메이션을 재생/정지해보세요.</p>
       <Circle />
@@ -58,7 +62,7 @@ function Circle() {
     };
 
     const circleElement = circleRef.current;
-    console.log(circleElement);
+
     // 이벤트 연결
     circleElement.addEventListener('click', handleMoveX);
 
@@ -69,7 +73,7 @@ function Circle() {
   }, []);
 
   const handlePlayAnimation = () => {
-    if(!animationRef.current) {
+    if (!animationRef.current) {
       settingAnimation();
     } else {
       animationRef.current.play();
@@ -77,8 +81,21 @@ function Circle() {
   };
 
   const handlePauseAnimation = () => {
-    animationRef.current.pause();
+    if (animationRef.current) {
+      animationRef.current.pause();
+    }
   };
+
+  // Video, Audio
+  // play(), pause()
+  // stop: pause() && currentTime = 0
+  // const handleStopAnimation = () => {
+  //   if (animationRef.current) {
+  //     // stop() 사용자 구현
+  //     animationRef.current.pause();
+  //     animationRef.current.currentTime = 0;
+  //   }
+  // }
 
   return (
     <>

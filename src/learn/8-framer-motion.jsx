@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 function FramerMotion_Animation() {
   const [count, setCount] = useState(0);
@@ -27,8 +28,11 @@ function FramerMotion_Animation() {
 
   return (
     <>
+      <Helmet>
+        <title>Framer Motion Animation - Learn</title>
+      </Helmet>
       <h2>컴포넌트 내부의 DOM 요소를 직접 참조하는 Refs</h2>
-      <div className="flex gap-2">
+      <div className="flex gap-2 mb-5">
         <button
           type="button"
           className="my-6 py-1.5 px-2.5 border border-slate-200 rounded-md shadow-lg"
@@ -78,7 +82,7 @@ function Circle() {
       whileInView={{
         y: 0,
         opacity: 1,
-        scale: 6,
+        scale: 1.6,
       }}
       viewport={{
         once: true,

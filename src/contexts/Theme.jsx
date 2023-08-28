@@ -1,4 +1,4 @@
-/* eslint-disable react-refresh/only-export-components */
+import { node, string } from 'prop-types';
 import { createContext, useContext, useMemo, useReducer } from 'react';
 
 // Context 생성
@@ -81,6 +81,12 @@ function ThemeProvider({ displayName = 'ThemeContext.Provider', children }) {
   );
 }
 
+ThemeProvider.propTypes = {
+  displayName: string,
+  children: node
+}
+
+
 export default ThemeProvider;
 
 // 커스텀 훅
@@ -95,7 +101,9 @@ export function useTheme() {
 export function useDispatch() {
   const contextValue = useContext(ThemeContext);
   if (!contextValue) {
-    throw new Error('useDispatch 훅은 ThemeProvider 내부에서만 사용 가능합니다.');
+    throw new Error(
+      'useDispatch 훅은 ThemeProvider 내부에서만 사용 가능합니다.'
+    );
   }
   return contextValue.dispatch;
 }

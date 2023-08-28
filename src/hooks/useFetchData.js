@@ -2,11 +2,9 @@ import { useEffect, useState } from 'react';
 
 const defaultOptions = {
   method: 'GET',
-}
+};
 
-export default function useFetchData(endpoint, options = {}) {
-  
-
+function useFetchData(endpoint, options = {}) {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -38,8 +36,11 @@ export default function useFetchData(endpoint, options = {}) {
 
     return () => {
       controller.abort();
-    }
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [endpoint]);
 
   return { data, isLoading, error };
 }
+
+export default useFetchData;
